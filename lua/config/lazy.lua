@@ -53,6 +53,9 @@ require("lazy").setup({
       },
     },
   },
+  -- dev = {
+  --   path = '~/open-source',
+  -- }
 })
 
 require("project_nvim").setup({

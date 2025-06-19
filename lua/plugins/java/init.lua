@@ -29,11 +29,13 @@ return {
         },
         setup = {
           jdtls = function()
-            require("java").setup({
+            local java = require("java")
+            java.setup({
               -- Your custom nvim-java configuration goes here
             })
 
             local map = vim.keymap.set
+            local java_test_api = java.test
 
             map("n", "<leader>tjc", "<cmd>JavaTestRunCurrentClass<CR>", {
               desc = "Run current class",
@@ -44,16 +46,27 @@ return {
             map("n", "<leader>tjr", "<cmd>JavaTestViewLastReport<CR>", {
               desc = "Show recent report",
             })
-            map("n", "<leader>tjsc", "<cmd>JavaTestRunCurrentClass<CR><cmd>JavaTestViewLastReport<CR>", {
-              desc = "Run class & show report",
-            })
-            map("n", "<leader>tjsm", "<cmd>JavaTestRunCurrentMethod<CR><cmd>JavaTestViewLastReport<CR>", {
-              desc = "Run method & show report",
-            })
+            -- map("n", "<leader>tjsc", function()
+            --     java_test_api.run_current_class(function()
+            --         java_test_api.view_last_report()
+            --     end)
+            -- end, {
+            --     desc = "Test (Java): Run class & show report",
+            -- })
+            -- map("n", "<leader>tjsm", function()
+            --     java_test_api.run_current_method(function ()
+            --         print("hello")
+            --         java_test_api.view_last_report()
+            --     end)
+            -- end, {
+            --     desc = "Test (Java): Run method & show report",
+            -- })
 
           end,
         },
       },
     },
   },
+  -- dir = '~/open-source/nvim-java',
+  -- dev = true,
 }
