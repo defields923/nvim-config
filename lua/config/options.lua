@@ -39,3 +39,5 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.g.autoformat = false
+
+vim.o.sessionoptions="buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
